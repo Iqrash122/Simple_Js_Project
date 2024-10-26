@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajax Project</title>
+</head>
+<body>
+    <p id="demo">Click here to load data</p>
+    <button type="button" onclick="load()"> click </button>
+
+    <script>
+        function load() {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function(){
+                if (this.readyState ==4 && this.status == 200) {
+                    document.getElementById("demo").innerHTML = this.responseText;
+                    console.log(this.responseText);
+                              
+                }
+                else if(this.readyState ==4 && this.status ==404){
+                    document.getElementById("demo").innerHTML = "File not Found";
+                }
+            }
+            xhttp.open('GET',"https://jsonplaceholder.typicode.com/posts", true);
+            xhttp.send();
+
+            
+        }
+    </script>
+    
+</body>
+</html>
